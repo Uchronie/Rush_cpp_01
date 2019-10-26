@@ -2,11 +2,14 @@
 // Created by Hippolyte Einfalt on 26/10/2019.
 //
 
-#include "../incs/UserModule.hpp"
+#include "UserModule.hpp"
 
 UserModule::UserModule() : _hostInfo(initInfo(gethostid())), _userInfo(initInfo(getuid())){return ;}
+
 UserModule::~UserModule() {return ;}
+
 UserModule::UserModule(UserModule const &src) : _hostInfo(src.getHostInfo()), _userInfo(src.getUserInfo()) {return ;}
+
 UserModule &UserModule::operator=(UserModule const &src) {
     _hostInfo = src.getHostInfo();
     _userInfo = src.getUserInfo();
@@ -24,7 +27,7 @@ std::string UserModule::initInfo(long uid) const {
 
     var = getpwuid(uid);
     ret << var->pw_name << '-' << var->pw_gid << '-' << var->pw_uid << std::endl;
-    return ret.str();
+		return ret.str();
 }
 
 const std::string &UserModule::getHostInfo() const {return _hostInfo;}

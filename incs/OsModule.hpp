@@ -2,19 +2,18 @@
 // Created by Hippolyte Einfalt on 26/10/2019.
 //
 
-#ifndef OSMONITOR_HPP
-#define OSMONITOR_HPP
+#ifndef OS_MODULE_HPP
+#define OS_MODULE_HPP
 
 #include "IMonitorModule.hpp"
-#include <sys/utsname.h>
 
-class OsMonitor : public IMonitorModule {
+class OsModule : public IMonitorModule {
 public:
-    OsMonitor();
-    ~OsMonitor();
-    OsMonitor(OsMonitor const &);
+    OsModule();
+    ~OsModule();
+    OsModule(OsModule const &);
 
-    OsMonitor &operator=(OsMonitor const &);
+    OsModule &operator=(OsModule const &);
 
     void update();
     std::string       initOsInfo();
@@ -27,4 +26,4 @@ private:
 };
 
 
-#endif //OSMONITOR_HPP
+#endif //OsModule_HPP

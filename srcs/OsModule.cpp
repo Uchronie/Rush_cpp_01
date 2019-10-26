@@ -2,21 +2,21 @@
 // Created by Hippolyte Einfalt on 26/10/2019.
 //
 
-#include "../incs/OsMonitor.hpp"
+#include "OsModule.hpp"
 
-OsMonitor::OsMonitor() : _osInfo(initOsInfo()) {return ;}
-OsMonitor::~OsMonitor() {return ;}
-OsMonitor::OsMonitor(OsMonitor const &) : _osInfo(getOsInfo()) {return ;}
-OsMonitor &OsMonitor::operator=(OsMonitor const &src) {
+OsModule::OsModule() : _osInfo(initOsInfo()) {return ;}
+OsModule::~OsModule() {return ;}
+OsModule::OsModule(OsModule const &) : _osInfo(getOsInfo()) {return ;}
+OsModule &OsModule::operator=(OsModule const &src) {
     _osInfo = src.getOsInfo();
     return *this;
 }
 
-void OsMonitor::update() {
+void OsModule::update() {
     return ;
 }
 
-std::string       OsMonitor::initOsInfo() {
+std::string       OsModule::initOsInfo() {
     std::stringstream ret;
     struct utsname tmp;
 
@@ -29,10 +29,10 @@ std::string       OsMonitor::initOsInfo() {
         return "";
 }
 
-const std::string &OsMonitor::getOsInfo() const {
+const std::string &OsModule::getOsInfo() const {
     return _osInfo;
 }
 
-void OsMonitor::setOsInfo(const std::string &osInfo) {
+void OsModule::setOsInfo(const std::string &osInfo) {
     _osInfo = osInfo;
 }
