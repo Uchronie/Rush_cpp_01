@@ -2,6 +2,7 @@
 # define I_MONITOR_MODULE_HPP
 
 # include <ncurses.h>
+# include <curses.h>
 # include <iostream>
 # include <string>
 # include <list>
