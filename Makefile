@@ -6,14 +6,17 @@ NAME = test
 
 CC = g++
 
-SRCC = whatever.cpp
+VPATH = srcs:
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+SRCC = main.cpp OsMonitor.cpp SdlClass.cpp UserModule.cpp
+
+CPPFLAGS = -Wall -Wextra -Werror $(shell sdl2-config --cflags)
+LDFLAGS = $(shell sdl2-config --libs) -lm -lSDL_ttf -g
 
 all: $(NAME)
 
 $(NAME): $(SRCC)
-	@ $(CC) $(CFLAGS) -o $(NAME) $^
+	$(CC) $(CPPFLAGS) $(LDFLAGS) -o $(NAME) $^
 
 fclean:
 	@ rm -f $(NAME)
