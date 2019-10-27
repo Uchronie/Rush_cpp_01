@@ -6,7 +6,7 @@ RamModule::RamModule() : _lastUpdate(time(NULL)) {
 
 RamModule::~RamModule() {return ;}
 RamModule::RamModule(RamModule const &) {return ;}
-RamModule &RamModule::operator=(RamModule const &src) {
+RamModule &RamModule::operator=(RamModule const &) {
     return *this;
 }
 

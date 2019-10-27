@@ -73,7 +73,7 @@ void SdlClass::printInfo(SDL_Rect &pos, SDL_Surface *module) {
     SDL_Color fontColor = {FONT_R, FONT_G, FONT_B, SDL_ALPHA_OPAQUE};
     SDL_Surface *text;
 
-    text = TTF_RenderText_Blended(_police, "Test fefefwefwefwe", fontColor);
+    text = TTF_RenderText_Blended(_police, "TestTest", fontColor);
     SDL_BlitScaled(text, &pos, module, &pos);
 }
 

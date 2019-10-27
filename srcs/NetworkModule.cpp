@@ -6,7 +6,7 @@ NetworkModule::NetworkModule() : _lastUpdate(time(NULL)) {
 
 NetworkModule::~NetworkModule() {return ;}
 NetworkModule::NetworkModule(NetworkModule const &) {return ;}
-NetworkModule &NetworkModule::operator=(NetworkModule const &src) {
+NetworkModule &NetworkModule::operator=(NetworkModule const &) {
     return *this;
 }
 

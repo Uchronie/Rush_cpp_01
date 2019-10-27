@@ -23,12 +23,12 @@ NcursesDisplay::~NcursesDisplay() {
 	return ;
 }
 
-NcursesDisplay::NcursesDisplay(NcursesDisplay const &src) {
+NcursesDisplay::NcursesDisplay(NcursesDisplay const &) {
 	//this->_mods = src._mods;
 	return ;
 }
 
-NcursesDisplay &NcursesDisplay::operator=(NcursesDisplay const &src) {
+NcursesDisplay &NcursesDisplay::operator=(NcursesDisplay const &) {
     //this->_mods = src._mods;
     return *this;
 }
