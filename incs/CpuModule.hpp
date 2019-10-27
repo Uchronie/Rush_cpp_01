@@ -1,7 +1,3 @@
-//
-// Created by Hippolyte Einfalt on 26/10/2019.
-//
-
 #ifndef CPU_MODULE_HPP
 #define CPU_MODULE_HPP
 
@@ -17,10 +13,15 @@ public:
 
     void update();
 
-		void init();
+	void init();
+	double CpuUsage();
 private:
-		int _core;
-		std::string _type;
+	int _core;
+	std::string _type;
+
+	time_t _lastUpdate;
+	double _usage;
+	host_cpu_load_info_data_t _prev_cpu_load;
 };
 
 

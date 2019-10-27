@@ -4,11 +4,17 @@
 
 #include "OsModule.hpp"
 
-OsModule::OsModule() : _osInfo(initOsInfo()) {return ;}
+OsModule::OsModule() {
+	initOsInfo();
+	return ;
+}
 OsModule::~OsModule() {return ;}
-OsModule::OsModule(OsModule const &) : _osInfo(getOsInfo()) {return ;}
+OsModule::OsModule(OsModule const &) {
+	initOsInfo();
+	return ;
+}
 OsModule &OsModule::operator=(OsModule const &src) {
-    _osInfo = src.getOsInfo();
+    this->_print = src.getOsInfo();
     return *this;
 }
 
@@ -17,22 +23,33 @@ void OsModule::update() {
 }
 
 std::string       OsModule::initOsInfo() {
-    std::stringstream ret;
-    struct utsname tmp;
+	std::string value = std::to_string(GetOSVersionComponent(1))+ "." +
+	std::to_string(GetOSVersionComponent(2))+ "." + std::to_string(GetOSVersionComponent(3));
 
-    if (!uname(&tmp)) {//protect it later with exception
-        ret << tmp.sysname << "\n" << tmp.nodename << "\n" << tmp.release << "\n" << tmp.version << "\n" << tmp.machine
-            << std::endl;
-        return ret.str();
+	this->_print = "MacOs version " + value;
+	std::cout << this->_print << std::endl;
+	return this->_print;
+}
+
+int OsModule::GetOSVersionComponent(int component) {
+    char cmd[64] ;
+
+    sprintf(cmd, "sw_vers -productVersion | awk -F '.' '{print $%d}'", component);
+    FILE* stdoutFile = popen(cmd, "r") ;
+    int answer = 0 ;
+    if (stdoutFile) {
+        char buff[16] ;
+        char *stdout = fgets(buff, sizeof(buff), stdoutFile) ;
+        pclose(stdoutFile) ;
+        sscanf(stdout, "%d", &answer) ;
     }
-    else
-        return "";
+    return answer ;
 }
 
 const std::string &OsModule::getOsInfo() const {
-    return _osInfo;
+    return this->_print;
 }
 
 void OsModule::setOsInfo(const std::string &osInfo) {
-    _osInfo = osInfo;
+    this->_print = osInfo;
 }

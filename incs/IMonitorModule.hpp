@@ -3,16 +3,24 @@
 
 # include <iostream>
 # include <string>
-# include <sys/types.h>
-# include <sys/utsname.h>
 # include <pwd.h>
 # include <uuid/uuid.h>
 # include <unistd.h>
 # include <sstream>
+# include <iomanip>
 # include <ctime>
-# include <cpuid.h>
+# include <sys/types.h>
+# include <sys/utsname.h>
 # include <sys/param.h>
 # include <sys/sysctl.h>
+# include <mach/mach_init.h>
+# include <mach/mach_error.h>
+# include <mach/mach_host.h>
+# include <mach/vm_map.h>
+# include <cpuid.h>
+# include <stdio.h>
+# include <stdint.h>
+# include <unistd.h>
 
 class IMonitorModule {
 public:

@@ -17,12 +17,12 @@ void TimeModule::update() {
 
 const std::string TimeModule::getFormatedTime() const {
 	time_t rawtime;
-  struct tm * timeinfo;
-  char buffer [80];
+	struct tm * timeinfo;
+	char buffer [80];
 
-  time (&rawtime);
-  timeinfo = localtime (&rawtime);
+	time (&rawtime);
+	timeinfo = localtime (&rawtime);
 
-  strftime (buffer,80,"%c.",timeinfo);
+	strftime (buffer,80,"%c.",timeinfo);
 	return buffer;
 }

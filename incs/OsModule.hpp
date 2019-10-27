@@ -20,9 +20,10 @@ public:
 
     const std::string &getOsInfo() const;
     void setOsInfo(const std::string &osInfo);
+	int GetOSVersionComponent(int component);
 
 private:
-    std::string     _osInfo;
+    std::string     _print;
 };
 
 
