@@ -16,7 +16,7 @@ public:
     UserModule &operator=(UserModule const &);
 
     std::string initInfo(long uid) const;
-    void update();
+    std::string update();
 
     const std::string &getHostInfo() const;
     void setHostInfo(const std::string &hostInfo);

@@ -16,8 +16,9 @@ UserModule &UserModule::operator=(UserModule const &src) {
     return *this;
 }
 
-void UserModule::update() {
-    return ;
+std::string UserModule::update() {
+	std::string ret = "User : " + this->_userInfo + "\nHost : " + this->_hostInfo + "\n";
+    return ret;
 }
 
 
@@ -26,7 +27,7 @@ std::string UserModule::initInfo(long uid) const {
     struct passwd *var;
 
     var = getpwuid(uid);
-    ret << var->pw_name << '-' << var->pw_gid << '-' << var->pw_uid << std::endl;
+    ret << var->pw_name << '-' << var->pw_gid << '-' << var->pw_uid;
 		return ret.str();
 }
 

@@ -15,7 +15,7 @@ public:
 
     TimeModule &operator=(TimeModule const &);
 
-    void update();
+    std::string update();
 
     const std::string getFormatedTime() const;
 

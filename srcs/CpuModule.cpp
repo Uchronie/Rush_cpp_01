@@ -12,10 +12,11 @@ CpuModule &CpuModule::operator=(CpuModule const &src) {
     return *this;
 }
 
-void CpuModule::update() {
+std::string CpuModule::update() {
 	if (time(NULL) - this->_lastUpdate > 1)
 		this->CpuUsage();
-    return ;
+
+    return this->_print;
 }
 
 double CpuModule::CpuUsage()
@@ -30,11 +31,15 @@ double CpuModule::CpuUsage()
 	system = cpu_load.cpu_ticks[CPU_STATE_SYSTEM] - this->_prev_cpu_load.cpu_ticks[CPU_STATE_SYSTEM];
 	idle = cpu_load.cpu_ticks[CPU_STATE_IDLE] - this->_prev_cpu_load.cpu_ticks[CPU_STATE_IDLE];
 	this->_usage = (double)(user + system) / (system + user + idle) * 100.0;
-	std::cout << this->_usage << std::endl;
 
 	this->_prev_cpu_load = cpu_load;
 	this->_lastUpdate = time(NULL);
 
+	std::stringstream ret;
+	ret << "CPU Type : "<< this->_type << "\n";
+	ret << "CPU Number of core : "<< this->_core << "\n";
+	ret << "CPU Usage : "<< this->_usage << "%\n";
+	this->_print = ret.str();
 	return this->_usage;
 }
 
@@ -66,8 +71,8 @@ void CpuModule::init() {
 	        memcpy(CPUBrandString + 32, CPUInfo, sizeof(CPUInfo));
 	}
 
-	std::cout << "CPU Type: " << CPUBrandString << std::endl;
 	this->_type = CPUBrandString;
+	this->_type = this->_type.substr(7);
 
 	//CPU NB CORE
 	int nm[2];
@@ -84,6 +89,5 @@ void CpuModule::init() {
 			count = 1;
  	}
 
-	std::cout << "Number of core: " << count << std::endl;
 	this->_core = count;
 }

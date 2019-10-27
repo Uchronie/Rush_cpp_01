@@ -11,11 +11,11 @@ public:
 
     RamModule &operator=(RamModule const &);
 
-    void update();
+    std::string update();
 
 	void RamUsage();
 	std::string bytes_format(long bytes);
-	
+
 private:
 	time_t _lastUpdate;
 	std::string _print;

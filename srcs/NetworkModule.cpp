@@ -10,11 +10,11 @@ NetworkModule &NetworkModule::operator=(NetworkModule const &src) {
     return *this;
 }
 
-void NetworkModule::update() {
+std::string NetworkModule::update() {
 	if (time(NULL) - this->_lastUpdate > 1)
 		this->NetworkUsage();
 
-    return ;
+    return this->_print;
 }
 
 std::string NetworkModule::bytes_format(long bytes) {
@@ -52,12 +52,11 @@ void NetworkModule::NetworkUsage()
 
 		std::stringstream ss2;
 
-		ss2 << bytes_format(input);
+		ss2 << "Network packets : " << bytes_format(input);
         ss2 << "/s in, ";
         ss2 << bytes_format(output);
-        ss2 << "/s out";
+        ss2 << "/s out\n";
 		this->_print = ss2.str();
-		std::cout << this->_print << std::endl;
 		return;
     }
 

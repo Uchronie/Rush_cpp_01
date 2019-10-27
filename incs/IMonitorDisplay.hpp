@@ -1,11 +1,15 @@
-#ifndef I_MONITOR_DISPLAY
-# define I_MONITOR_DISPLAY
+#ifndef I_MONITOR_DISPLAY_HPP
+# define I_MONITOR_DISPLAY_HPP
 
 class IMonitorDisplay {
-	IMonitorDisplay();
-	virtual ~IMonitorDisplay();
+public:
+	IMonitorDisplay() {}
+	virtual ~IMonitorDisplay() {}
 
+	virtual void display() = 0;
 
+private:
+	std::list<IMonitorModule*> _mods;
 
 };
 

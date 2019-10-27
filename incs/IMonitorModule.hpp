@@ -1,8 +1,10 @@
 #ifndef I_MONITOR_MODULE_HPP
 # define I_MONITOR_MODULE_HPP
 
+# include <ncurses.h>
 # include <iostream>
 # include <string>
+# include <list>
 # include <pwd.h>
 # include <uuid/uuid.h>
 # include <unistd.h>
@@ -27,7 +29,7 @@ public:
     IMonitorModule() {}
     virtual ~IMonitorModule() {}
 
-    virtual void update() = 0;
+    virtual std::string update() = 0;
 private:
     IMonitorModule(IMonitorModule const &);
     IMonitorModule &operator=(IMonitorModule const &);

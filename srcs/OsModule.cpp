@@ -18,16 +18,15 @@ OsModule &OsModule::operator=(OsModule const &src) {
     return *this;
 }
 
-void OsModule::update() {
-    return ;
+std::string OsModule::update() {
+    return this->_print;
 }
 
 std::string       OsModule::initOsInfo() {
 	std::string value = std::to_string(GetOSVersionComponent(1))+ "." +
 	std::to_string(GetOSVersionComponent(2))+ "." + std::to_string(GetOSVersionComponent(3));
 
-	this->_print = "MacOs version " + value;
-	std::cout << this->_print << std::endl;
+	this->_print = "MacOs version : " + value + "\n";
 	return this->_print;
 }
 

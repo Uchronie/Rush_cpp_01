@@ -10,11 +10,11 @@ RamModule &RamModule::operator=(RamModule const &src) {
     return *this;
 }
 
-void RamModule::update() {
+std::string RamModule::update() {
 	if (time(NULL) - this->_lastUpdate > 1)
 		this->RamUsage();
 
-    return ;
+    return this->_print;
 }
 
 std::string RamModule::bytes_format(long bytes) {
@@ -43,13 +43,12 @@ void RamModule::RamUsage()
         long long free_memory = (int64_t)vm_stats.free_count * (int64_t)page_size;
         long long used_memory = ((int64_t)vm_stats.active_count +
                                  (int64_t)vm_stats.inactive_count +
-                                 (int64_t)vm_stats.wire_count) *  (int64_t)page_size;
+                                 (int64_t)vm_stats.wire_count) * (int64_t)page_size;
 
 		std::stringstream ret;
-		ret << this->bytes_format(used_memory) << "M used, " << this->bytes_format(free_memory) << "M unused." << std::endl;
+		ret << "Physical memory : " << this->bytes_format(used_memory) << " used, " << this->bytes_format(free_memory) << " unused.\n";
         this->_print = ret.str();
 
-		std::cout << this->_print;
 		this->_lastUpdate = time(NULL);
 
 	}

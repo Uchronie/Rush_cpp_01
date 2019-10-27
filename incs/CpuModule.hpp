@@ -11,13 +11,14 @@ public:
 
     CpuModule &operator=(CpuModule const &);
 
-    void update();
+    std::string update();
 
 	void init();
 	double CpuUsage();
 private:
 	int _core;
 	std::string _type;
+	std::string _print;
 
 	time_t _lastUpdate;
 	double _usage;

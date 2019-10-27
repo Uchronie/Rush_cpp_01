@@ -11,7 +11,7 @@ public:
 
     NetworkModule &operator=(NetworkModule const &);
 
-    void update();
+    std::string update();
 
 	void init();
 	void NetworkUsage();

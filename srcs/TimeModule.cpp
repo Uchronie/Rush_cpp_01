@@ -11,8 +11,8 @@ TimeModule &TimeModule::operator=(TimeModule const &src) {
     return *this;
 }
 
-void TimeModule::update() {
-    return ;
+std::string TimeModule::update() {
+    return (getFormatedTime() + "\n");
 }
 
 const std::string TimeModule::getFormatedTime() const {

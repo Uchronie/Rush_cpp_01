@@ -15,7 +15,7 @@ public:
 
     OsModule &operator=(OsModule const &);
 
-    void update();
+    std::string update();
     std::string       initOsInfo();
 
     const std::string &getOsInfo() const;
