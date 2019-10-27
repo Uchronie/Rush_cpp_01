@@ -5,10 +5,10 @@
 #include "../incs/SdlClass.hpp"
 #include "../incs/IMonitorModule.hpp"
 
-#define WIN_WIDTH 140
-#define WIN_HEIGHT 480
-#define NBR_MODULE 1
-#define FONT_SIZE 65
+#define WIN_WIDTH 400
+#define WIN_HEIGHT 600
+#define NBR_MODULE 7
+#define FONT_SIZE MIN_SIZE_MODULE / 3
 #define MIN_SIZE_MODULE (WIN_HEIGHT / NBR_MODULE)
 #define FONT_R 255
 #define FONT_G 0
@@ -52,7 +52,7 @@ SDL_Window *SdlClass::initSdl() {
     initSurfaces(NBR_MODULE);
     if (!(ret = SDL_CreateWindow("ft_gkrellm",(_scrWidth - WIN_WIDTH) / 2 , (_scrHeight - WIN_HEIGHT) / 2, WIN_WIDTH, WIN_HEIGHT, SDL_WINDOW_SHOWN | SDL_WINDOW_BORDERLESS)))
         throw BadWindowCreationException();
-    return ret;;
+    return ret;
 }
 
 void SdlClass::exitSdl() {
@@ -69,14 +69,12 @@ void SdlClass::initScrValue() {
     _scrHeight = DM.h;
 }
 
-void SdlClass::printInfo(SDL_Rect pos) {
+void SdlClass::printInfo(SDL_Rect &pos, SDL_Surface *module) {
     SDL_Color fontColor = {FONT_R, FONT_G, FONT_B, SDL_ALPHA_OPAQUE};
     SDL_Surface *text;
 
-    pos.y = 0;
-    pos.w = 0;
-    text = TTF_RenderText_Solid(_police, "Test", fontColor);
-    SDL_BlitScaled(text, &pos, _surfaces.front(), NULL);
+    text = TTF_RenderText_Blended(_police, "Test fefefwefwefwe", fontColor);
+    SDL_BlitScaled(text, &pos, module, &pos);
 }
 
 void SdlClass::initSurfaces(unsigned int nbr) {
@@ -95,8 +93,8 @@ void SdlClass::initSurfaces(unsigned int nbr) {
             tmp.w = WIN_WIDTH;
             tmp.h = MIN_SIZE_MODULE;
             SDL_BlitScaled(*it, &tmp, _surfaces.front(), NULL);
-            SDL_FillRect(*it, &tmp, SDL_MapRGB((*it)->format, 0xFF - (0xFF / (i + 1)), 0xFF - (0xFF / (i + 1)), 0xFF - (0xFF / (i + 1))));
-            printInfo(tmp);
+            SDL_FillRect(*it, &tmp, SDL_MapRGB((*it)->format, 1 * (i * 5), 1 * (i * 5), 1 * (i * 5)));
+            printInfo(tmp, *it);
         }
     }
     SDL_UpdateWindowSurface(_screen);

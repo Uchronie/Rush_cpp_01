@@ -2,9 +2,6 @@
 // Created by Hippolyte Einfalt on 26/10/2019.
 //
 
-
-#include "../incs/UserModule.hpp"
-#include "../incs/OsMonitor.hpp"
 #include <iostream>
 #include <string>
 #include <unistd.h>
@@ -12,6 +9,7 @@
 #include <pwd.h>
 #include <uuid/uuid.h>
 
+#include "SdlClass.hpp"
 #include "OsModule.hpp"
 #include "TimeModule.hpp"
 #include "UserModule.hpp"

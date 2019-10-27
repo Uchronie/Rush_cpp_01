@@ -32,7 +32,7 @@ public:
     void update();
     void initScrValue();
     void initSurfaces(unsigned int nbr);
-    void printInfo(SDL_Rect);
+    void printInfo(SDL_Rect &, SDL_Surface *);
 
     class BadSdlInitException : public std::exception {
     public:

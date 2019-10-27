@@ -9,7 +9,7 @@ CpuModule::CpuModule() {
 	return ;}
 CpuModule::~CpuModule() {return ;}
 CpuModule::CpuModule(CpuModule const &) {return ;}
-CpuModule &CpuModule::operator=(CpuModule const &src) {
+CpuModule &CpuModule::operator=(CpuModule const &) {
     return *this;
 }
 
