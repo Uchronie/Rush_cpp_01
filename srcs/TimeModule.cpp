@@ -7,7 +7,7 @@
 TimeModule::TimeModule() {return ;}
 TimeModule::~TimeModule() {return ;}
 TimeModule::TimeModule(TimeModule const &) {return ;}
-TimeModule &TimeModule::operator=(TimeModule const &src) {
+TimeModule &TimeModule::operator=(TimeModule const &) {
     return *this;
 }
 
